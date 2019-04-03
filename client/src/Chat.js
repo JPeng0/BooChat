@@ -27,7 +27,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  TextField
+  TextField,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -325,6 +325,12 @@ class Chat extends React.Component {
             </Toolbar>
           </AppBar>
           <List className={classes.messages}>
+          <ChatView className="message-list"
+                    flipped={true}
+                    scrollLoadThreshold={50}
+            onInfiniteLoad={this.props.loadMoreHistory}>
+            {rows}
+          </ChatView>
             <ListItem alignItems="flex-start">
               <ListItemText
                 secondary={
@@ -355,7 +361,7 @@ class Chat extends React.Component {
                 className={classes.listNav}
                 color="textPrimary"
               >
-                23h
+                5h
               </Typography>
             </ListItem>
             <Divider />
@@ -423,16 +429,10 @@ class Chat extends React.Component {
                       className={classes.listNav}
                       color="textPrimary"
                     >
-                      5h
+                      23h
                     </Typography>
             </ListItem>
             <Divider />
-            <ChatView className="message-list"
-                    flipped={true}
-                    scrollLoadThreshold={50}
-            onInfiniteLoad={this.props.loadMoreHistory}>
-            {rows}
-          </ChatView>
           </List>
           <BottomNavigation
             value={value}
