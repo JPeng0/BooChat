@@ -12,7 +12,7 @@ cd /tmp/proxy
 
 echo -e "\n>>> downloading ... $F\n"
 manual="https://snail007.goproxyauth.com/goproxy/manual/zh/"
-LAST_VERSION=$(curl --silent "${MIRROR}https://api.github.com/repos/snail007/goproxy/releases/latest" | grep -po '"tag_name": *"\K.*?(?=")')
+LAST_VERSION=$(curl --silent "${MIRROR}https://api.github.com/repos/snail007/goproxy/releases/latest" | grep -po -s '"tag_name": *"\K.*?(?=")')
 wget  -t 1 "${MIRROR}https://github.com/snail007/goproxy/releases/download/${LAST_VERSION}/$F"
 
 echo -e ">>> installing ... \n"
